@@ -19,3 +19,32 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B compile --file pom.xml
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Java Runtime
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        cache: maven
+    - name: Run tests  with Maven
+      run: mvn -B test --file pom.xml
+
+  package:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Java Runtime
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        cache: maven
+    - name: Package application with Maven
+      run: mvn -B package --file pom.xml
+    
