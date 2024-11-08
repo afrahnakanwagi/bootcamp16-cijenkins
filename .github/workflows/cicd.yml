@@ -2,7 +2,7 @@ name: Java Project with Maven
 
 on:
   push:
-    branches: ["main", "staging"]
+    branches: ["main", "staging", "testbranch"]
   pull_request:
     branches: ["main"]
 
