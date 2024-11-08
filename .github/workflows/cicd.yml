@@ -18,4 +18,4 @@ on:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run mvn -B compile --file pom.xml
+        run: mvn -B compile --file pom.xml
